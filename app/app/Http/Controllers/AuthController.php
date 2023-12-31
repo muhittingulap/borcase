@@ -87,6 +87,7 @@ class AuthController extends Controller
                 "errors" => ["Bearer Token Not Found !"]
             ]);
         }
+        $request->session()->flush();
         $request->user()->tokens()->delete();
         return $this->success([]);
     }
