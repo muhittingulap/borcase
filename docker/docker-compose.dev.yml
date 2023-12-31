@@ -6,9 +6,12 @@ services:
   nginx:
     build: 
       dockerfile: nginx/nginx.dev.yml
-    ports:
-      - 80:80
       
   # Mysql
   mysql:
     platform: linux/x86_64
+
+  # Next.js
+  next:
+    build: 
+      dockerfile: next/next.dev.yml

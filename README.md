@@ -1,6 +1,10 @@
 # borcase
 Araç zimmet ve kullanıcı yönetimi - Next.js(Frontend) ve Laravel(Backend)
 
+# Project setup hosts file
+127.0.0.1       api.borcase.com
+127.0.0.1       borcase.com
+
 # Project setup with docker
 
 ```bash

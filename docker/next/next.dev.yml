@@ -1,0 +1,8 @@
+FROM node:alpine
+
+WORKDIR /home/borcase
+COPY . .
+
+CMD yarn install && APP_ENV=dev yarn dev
+
+EXPOSE 3000
