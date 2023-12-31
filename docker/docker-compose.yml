@@ -1,0 +1,54 @@
+version: '3'
+
+networks: 
+  borcase:
+
+services: 
+  
+  # Ngnix  
+  nginx:
+    container_name: bor_nginx
+    build: 
+      context: .
+      dockerfile: nginx/nginx.yml
+    volumes: 
+      - ./../app:/var/www/html
+    depends_on:
+      - mysql
+      - php
+    networks:
+      - borcase
+    ports:
+        - 80:80
+        - 443:443
+
+  # Mysql
+  mysql:
+    image: mysql
+    container_name: bor_mysql
+    tty: true
+    ports: 
+      - '3306:3306'
+    volumes: 
+      - ./db/mysql:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/my.cnf
+    environment: 
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOTPASSWORD}
+    networks: 
+      - borcase
+
+  # Php
+  php:   
+    container_name: bor_php
+    tty: true
+    build: 
+      context: .
+      dockerfile: php/php.yml
+    volumes:       
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./../app:/var/www/html
+    networks: 
+      - borcase

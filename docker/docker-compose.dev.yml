@@ -1,0 +1,14 @@
+version: '3'
+
+services: 
+  
+  # Ngnix  
+  nginx:
+    build: 
+      dockerfile: nginx/nginx.dev.yml
+    ports:
+      - 80:80
+      
+  # Mysql
+  mysql:
+    platform: linux/x86_64
