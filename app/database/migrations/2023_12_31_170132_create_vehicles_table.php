@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('plate')->unique();
             $table->string('model');
             $table->string('brand');
-            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });
