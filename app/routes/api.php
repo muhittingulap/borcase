@@ -35,7 +35,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // Company Routes
     Route::resource('vehicles', VehicleController::class);
 
-
     // Auth Routes
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
