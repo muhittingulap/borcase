@@ -35,7 +35,7 @@ class AuthController extends Controller
 
         if (!$user || !Hash::check($request->password, $user->password)) {
             return $this->error('Warning', 401, [
-                "errors" => ["The provided credentials are incorrect."]
+                "errors" => ["Kullanıcı adı şifre yanlış."]
             ]);
         }
 
@@ -64,7 +64,7 @@ class AuthController extends Controller
     {
         if (!$request->bearerToken()) {
             return $this->error('Warning', 401, [
-                "errors" => ["Bearer Token Not Found !"]
+                "errors" => ["Token bulunamadı !"]
             ]);
         }
 
@@ -84,7 +84,7 @@ class AuthController extends Controller
     {
         if (!$request->bearerToken()) {
             return $this->error('Warning', 401, [
-                "errors" => ["Bearer Token Not Found !"]
+                "errors" => ["Token bulunamadı !"]
             ]);
         }
         $request->session()->flush();
